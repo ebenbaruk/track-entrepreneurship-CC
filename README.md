@@ -3,17 +3,55 @@
 **Devenir super-user de Claude Code et l'utiliser pour lancer (et faire tourner) une startup.**
 Kit du cours *Entrepreneurship* — ESILV.
 
+## ⚡ Démarrage en 30 secondes
+
 ```bash
-git clone https://github.com/ebenbaruk/track-entrepreneurship-CC.git
-cd track-entrepreneurship-CC
-bash install.sh          # pack essentiel   (bash install.sh --all  pour tout)
+git clone https://github.com/ebenbaruk/track-entrepreneurship-CC.git ma-startup
+cd ma-startup
+claude
 ```
 
-Le repo contient :
-- un **plugin** avec 8 skills et 3 agents pour entrepreneurs (en français) ;
-- un **template `CLAUDE.md`** pour ta startup ;
-- un **script d'installation** des meilleurs skills de la communauté ;
-- ce **guide**, qui explique tout ce qu'on a vu en cours.
+1. Claude Code demande si tu fais confiance au dossier → **Oui**.
+2. Les skills et les agents sont **déjà dans les bons dossiers** (`.claude/skills/`, `.claude/agents/`) : rien à installer.
+3. Tape `/` pour voir les skills. **Ils ne se lancent jamais tout seuls** : c'est toi qui décides, avec `/nom-du-skill`.
+4. Premier prompt : « Aide-moi à remplir CLAUDE.md pour ma startup. »
+
+> 💡 Bouton **« Use this template »** sur GitHub : crée ta propre copie du repo pour ta startup.
+
+### Ce qu'il y a dans le dossier
+
+```
+ma-startup/
+├── CLAUDE.md               ← la mémoire de ta startup (à remplir)
+├── .claude/
+│   ├── skills/             ← 35 skills, appelables avec /nom
+│   └── agents/             ← 3 subagents : investisseur-sceptique, client-cible, mentor
+├── THIRD_PARTY.md          ← d'où viennent les skills de la communauté (sources, licences)
+├── .claude-plugin/         ← pour installer le kit partout (hors de ce dossier)
+├── install.sh              ← installation globale (optionnelle)
+└── startup/                ← tes livrables (créé par Claude au fur et à mesure)
+```
+
+### Les 35 skills du dossier
+
+| Famille | Commandes |
+|---|---|
+| 🚀 **Startup** (les nôtres) | `/valider-idee` `/etude-de-marche` `/lean-canvas` `/pitch-deck` `/cold-email` `/landing-page` `/previsionnel` `/veille-concurrents` |
+| 📈 **Marketing** (Corey Haines) | `/copywriting` `/cro` `/launch` `/pricing` `/customer-research` `/competitors` `/product-marketing` `/marketing-ideas` `/marketing-plan` `/seo-audit` `/social` `/emails` |
+| 🦸 **Méthode** (Superpowers) | `/brainstorming` `/writing-plans` `/executing-plans` `/dispatching-parallel-agents` `/subagent-driven-development` `/systematic-debugging` `/test-driven-development` `/verification-before-completion` |
+| 🎨 **Design & contenu** | `/frontend-design` `/ui-ux-pro-max` `/frontend-slides` `/humanizer` |
+| 🧰 **Outils** | `/caveman` `/last30days` `/skill-creator` |
+
+**Pourquoi manuels ?** Chaque skill a `disable-model-invocation: true` dans son `SKILL.md`. Avantages : Claude ne lance rien sans toi, et leurs descriptions ne remplissent pas son contexte. Pour qu'un skill se déclenche tout seul, supprime cette ligne.
+
+**Les agents** s'appellent en le demandant : « Demande à l'investisseur sceptique de critiquer mon deck », ou avec `@investisseur-sceptique`.
+
+### Utiliser le kit dans TOUS tes projets (optionnel)
+
+```bash
+bash install.sh          # pack essentiel, installé pour ton utilisateur
+bash install.sh --all    # + pack avancé
+```
 
 ---
 
@@ -104,7 +142,7 @@ Le **contexte**, c'est la mémoire de travail de Claude : tout ce qu'il « voit 
 | `Esc` `Esc` / `/rewind` | Revient en arrière | Il est parti dans une mauvaise direction |
 
 ### `CLAUDE.md` : la mémoire permanente
-Un fichier `CLAUDE.md` à la racine du projet est **lu automatiquement au début de chaque session**. Mets-y : le projet, la cible, le ton, les règles. → [`templates/CLAUDE.md`](templates/CLAUDE.md)
+Un fichier `CLAUDE.md` à la racine du projet est **lu automatiquement au début de chaque session**. Mets-y : le projet, la cible, le ton, les règles. → [`CLAUDE.md`](CLAUDE.md) de ce repo
 
 - `/init` génère un `CLAUDE.md` à partir du dossier.
 - `~/.claude/CLAUDE.md` = tes préférences **globales** (« réponds en français », « sois direct »).
@@ -272,42 +310,38 @@ Commande : `/hooks`.
 
 ## 9. Les skills de ce repo
 
-Installation : `bash install.sh`, ou
-```bash
-/plugin marketplace add ebenbaruk/track-entrepreneurship-CC
-/plugin install entrepreneur@track-entrepreneurship-cc
-```
+**Déjà actifs** quand tu ouvres Claude Code dans ce dossier : ils vivent dans [`.claude/skills/`](.claude/skills) et [`.claude/agents/`](.claude/agents). Pour les avoir partout : `bash install.sh`.
 
 ### Skills
 
 | Skill | Ce qu'il fait | Essaie |
 |---|---|---|
-| [`/valider-idee`](plugin/skills/valider-idee/SKILL.md) | Hypothèses à risque + script d'interview *Mom Test* + plan de test 7 jours | « J'ai une idée : … Est-ce que ça vaut le coup ? » |
-| [`/etude-de-marche`](plugin/skills/etude-de-marche/SKILL.md) | TAM/SAM/SOM + concurrents analysés **en parallèle** par des subagents, sources à l'appui | « Étude de marché des box repas pour étudiants en France » |
-| [`/lean-canvas`](plugin/skills/lean-canvas/SKILL.md) | Lean Canvas critique + la case la plus risquée | « Fais le lean canvas de mon projet » |
-| [`/pitch-deck`](plugin/skills/pitch-deck/SKILL.md) | Deck 12 slides, peu de texte + script de 3 min + questions pièges | « Prépare mon pitch pour le concours » |
-| [`/cold-email`](plugin/skills/cold-email/SKILL.md) | Séquences de prospection < 100 mots, personnalisées, en brouillons Gmail | « Écris à ces 20 restaurants pour une démo » |
-| [`/landing-page`](plugin/skills/landing-page/SKILL.md) | Copy → design → formulaire waitlist → mise en ligne | « Fais une landing page avec waitlist et mets-la en ligne » |
-| [`/previsionnel`](plugin/skills/previsionnel/SKILL.md) | Excel 36 mois avec vraies formules, unit economics, scénarios | « Fais mon prévisionnel sur 3 ans » |
-| [`/veille-concurrents`](plugin/skills/veille-concurrents/SKILL.md) | Digest de ce qui a changé chez les concurrents, prévu pour `/schedule` | « Lance ma veille de la semaine » |
+| [`/valider-idee`](.claude/skills/valider-idee/SKILL.md) | Hypothèses à risque + script d'interview *Mom Test* + plan de test 7 jours | « J'ai une idée : … Est-ce que ça vaut le coup ? » |
+| [`/etude-de-marche`](.claude/skills/etude-de-marche/SKILL.md) | TAM/SAM/SOM + concurrents analysés **en parallèle** par des subagents, sources à l'appui | « Étude de marché des box repas pour étudiants en France » |
+| [`/lean-canvas`](.claude/skills/lean-canvas/SKILL.md) | Lean Canvas critique + la case la plus risquée | « Fais le lean canvas de mon projet » |
+| [`/pitch-deck`](.claude/skills/pitch-deck/SKILL.md) | Deck 12 slides, peu de texte + script de 3 min + questions pièges | « Prépare mon pitch pour le concours » |
+| [`/cold-email`](.claude/skills/cold-email/SKILL.md) | Séquences de prospection < 100 mots, personnalisées, en brouillons Gmail | « Écris à ces 20 restaurants pour une démo » |
+| [`/landing-page`](.claude/skills/landing-page/SKILL.md) | Copy → design → formulaire waitlist → mise en ligne | « Fais une landing page avec waitlist et mets-la en ligne » |
+| [`/previsionnel`](.claude/skills/previsionnel/SKILL.md) | Excel 36 mois avec vraies formules, unit economics, scénarios | « Fais mon prévisionnel sur 3 ans » |
+| [`/veille-concurrents`](.claude/skills/veille-concurrents/SKILL.md) | Digest de ce qui a changé chez les concurrents, prévu pour `/schedule` | « Lance ma veille de la semaine » |
 
 ### Agents
 
 | Agent | Rôle | Essaie |
 |---|---|---|
-| [`investisseur-sceptique`](plugin/agents/investisseur-sceptique.md) | VC qui démonte ton pitch : 3 drapeaux rouges, 10 questions dures, le concurrent oublié | « Demande à l'investisseur sceptique de critiquer mon deck » |
-| [`client-cible`](plugin/agents/client-cible.md) | Simule un client pour t'entraîner aux interviews (et te corrige à la fin) | « Je veux m'entraîner à interviewer le client cible » |
-| [`mentor`](plugin/agents/mentor.md) | Office hours : diagnostic + LA prochaine action | « Appelle le mentor, je suis bloqué » |
+| [`investisseur-sceptique`](.claude/agents/investisseur-sceptique.md) | VC qui démonte ton pitch : 3 drapeaux rouges, 10 questions dures, le concurrent oublié | « Demande à l'investisseur sceptique de critiquer mon deck » |
+| [`client-cible`](.claude/agents/client-cible.md) | Simule un client pour t'entraîner aux interviews (et te corrige à la fin) | « Je veux m'entraîner à interviewer le client cible » |
+| [`mentor`](.claude/agents/mentor.md) | Office hours : diagnostic + LA prochaine action | « Appelle le mentor, je suis bloqué » |
 
 ---
 
 ## 10. Le catalogue : les meilleurs skills de la communauté
 
-Étoiles GitHub relevées début octobre 2026. Tous ont été vérifiés (dépôt existant, licence, commande d'installation).
+Étoiles GitHub relevées début octobre 2026. Tous ont été vérifiés (dépôt existant, licence, commande d'installation). ✅ = **déjà inclus dans `.claude/skills/` de ce repo** (rien à installer, appelle-le avec `/`).
 
 ### ⭐ Les stars
 
-#### 🪨 Caveman — *« why use many token when few token do trick »*
+#### 🪨 Caveman ✅ — *« why use many token when few token do trick »*
 [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) · ~108k ⭐ · Apache-2.0
 Claude répond comme un homme des cavernes : zéro politesse, zéro blabla, uniquement l'info. **Réduit d'environ 65 % les tokens de sortie** → plus rapide, moins cher, plus de place dans le contexte. Trois niveaux : lite, full, ultra.
 ```bash
@@ -332,7 +366,7 @@ cd ~/.claude/skills/gstack && ./setup
 ```
 > Commence par **`/office-hours`** : c'est la meilleure commande pour un entrepreneur.
 
-#### 🦸 Superpowers — la méthode
+#### 🦸 Superpowers ✅ — la méthode
 [obra/superpowers](https://github.com/obra/superpowers) · ~294k ⭐ (le repo de skills le plus étoilé) · MIT
 Une méthode complète : brainstorming → plan → exécution par subagents → tests → vérification. Claude devient beaucoup plus rigoureux sur les gros projets.
 ```bash
@@ -341,7 +375,7 @@ Une méthode complète : brainstorming → plan → exécution par subagents →
 
 #### 🎓 Karpathy Skills — 4 principes anti-erreurs
 [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) · ~216k ⭐
-Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs des IA : **réfléchir avant d'agir, simplicité d'abord, changements chirurgicaux, objectif vérifiable.** (Déjà intégré dans notre [template](templates/CLAUDE.md).)
+Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs des IA : **réfléchir avant d'agir, simplicité d'abord, changements chirurgicaux, objectif vérifiable.** (Pas de licence sur le repo, donc pas inclus ici : ses 4 principes sont résumés dans notre [`CLAUDE.md`](CLAUDE.md).)
 ```bash
 /plugin marketplace add forrestchang/andrej-karpathy-skills
 /plugin install andrej-karpathy-skills@karpathy-skills
@@ -351,10 +385,10 @@ Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs d
 
 | Skill | ⭐ | Pourquoi | Installation |
 |---|---|---|---|
-| [**Marketing Skills**](https://github.com/coreyhaines31/marketingskills) (Corey Haines) | ~52k | 40+ skills : copywriting, CRO, SEO, pricing, cold email, lancement, paywalls, referral, ads… | `/plugin marketplace add coreyhaines31/marketingskills` → `/plugin install marketing-skills@marketingskills` |
+| ✅ [**Marketing Skills**](https://github.com/coreyhaines31/marketingskills) (Corey Haines) | ~52k | 40+ skills : copywriting, CRO, SEO, pricing, cold email, lancement, paywalls, referral, ads… | `/plugin marketplace add coreyhaines31/marketingskills` → `/plugin install marketing-skills@marketingskills` |
 | [**Knowledge Work Plugins**](https://github.com/anthropics/knowledge-work-plugins) (Anthropic) | ~26k | Plugins métier officiels : `small-business`, `sales`, `marketing`, `finance`, `legal`, `product-management`, `customer-support` | `/plugin marketplace add anthropics/knowledge-work-plugins` → `/plugin install sales@knowledge-work-plugins` |
-| [**last30days**](https://github.com/mvanhorn/last30days-skill) | ~63k | Recherche ce qui se dit sur un sujet ces 30 derniers jours (Reddit, X, YouTube, HN…) et en fait une synthèse — parfait pour la veille et valider une tendance | `/plugin marketplace add mvanhorn/last30days-skill` → `/plugin install last30days` |
-| [**Humanizer**](https://github.com/blader/humanizer) | ~53k | Retire les tics d'écriture d'IA d'un texte (posts LinkedIn, emails, site) | `/plugin marketplace add blader/humanizer` → `/plugin install humanizer@humanizer` |
+| ✅ [**last30days**](https://github.com/mvanhorn/last30days-skill) | ~63k | Recherche ce qui se dit sur un sujet ces 30 derniers jours (Reddit, X, YouTube, HN…) et en fait une synthèse — parfait pour la veille et valider une tendance | `/plugin marketplace add mvanhorn/last30days-skill` → `/plugin install last30days` |
+| ✅ [**Humanizer**](https://github.com/blader/humanizer) | ~53k | Retire les tics d'écriture d'IA d'un texte (posts LinkedIn, emails, site) | `/plugin marketplace add blader/humanizer` → `/plugin install humanizer@humanizer` |
 | [**Claude SEO**](https://github.com/AgriciDaniel/claude-seo) | ~18k | Audit SEO complet : technique, contenu, schema, référencement dans les IA | `/plugin marketplace add AgriciDaniel/claude-seo` → `/plugin install claude-seo@agricidaniel-claude-seo` |
 | **aws-startup-advisor** (officiel) | — | Conseils d'architecture et de coûts cloud pour startups | `/plugin install aws-startup-advisor@claude-plugins-official` |
 | [**founder-skills**](https://github.com/ognjengt/founder-skills) | ~0,4k | Petits skills pour fondateurs (stratégie, produit, opérations) | voir le README du repo |
@@ -363,10 +397,10 @@ Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs d
 
 | Skill | ⭐ | Pourquoi | Installation |
 |---|---|---|---|
-| [**Anthropic Skills**](https://github.com/anthropics/skills) (officiel) | ~179k | **PowerPoint, Word, Excel, PDF** de qualité pro + `skill-creator` | `/plugin marketplace add anthropics/skills` → `/plugin install document-skills@anthropic-agent-skills` |
-| **frontend-design** (officiel) | — | Des interfaces qui n'ont pas l'air générées par une IA | `/plugin install frontend-design@claude-plugins-official` |
-| [**UI UX Pro Max**](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | ~132k | Base de styles, palettes, typos et règles UX pour des sites pro | `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill` |
-| [**Frontend Slides**](https://github.com/zarazhangrui/frontend-slides) | ~30k | De belles présentations en HTML (pitch, cours) | `/plugin marketplace add zarazhangrui/frontend-slides` → `/plugin install frontend-slides@frontend-slides` |
+| [**Anthropic Skills**](https://github.com/anthropics/skills) (officiel) | ~179k | **PowerPoint, Word, Excel, PDF** de qualité pro (licence propriétaire, à installer ; `frontend-design` et `skill-creator` sont inclus ✅) | `/plugin marketplace add anthropics/skills` → `/plugin install document-skills@anthropic-agent-skills` |
+| ✅ **frontend-design** (officiel) | — | Des interfaces qui n'ont pas l'air générées par une IA | `/plugin install frontend-design@claude-plugins-official` |
+| ✅ [**UI UX Pro Max**](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | ~132k | Base de styles, palettes, typos et règles UX pour des sites pro | `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill` |
+| ✅ [**Frontend Slides**](https://github.com/zarazhangrui/frontend-slides) | ~30k | De belles présentations en HTML (pitch, cours) | `/plugin marketplace add zarazhangrui/frontend-slides` → `/plugin install frontend-slides@frontend-slides` |
 | [**Remotion skills**](https://github.com/remotion-dev/skills) | ~5k | Créer des **vidéos** (démo produit, pub) en code | `npx skills add remotion-dev/skills` |
 
 ### 🧩 Productivité, mémoire & méthode
@@ -395,7 +429,7 @@ Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs d
 
 ## 11. Playbook : ta startup de A à Z
 
-Crée un dossier, copie [`templates/CLAUDE.md`](templates/CLAUDE.md), remplis-le, puis :
+Clone ce repo (c'est ton espace de travail), remplis [`CLAUDE.md`](CLAUDE.md), puis :
 
 | Étape | Prompt (copie-colle) | Outils |
 |---|---|---|

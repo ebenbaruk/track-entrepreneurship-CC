@@ -1,0 +1,15 @@
+{
+  "name": "entrepreneur",
+  "version": "1.1.0",
+  "description": "Skills et agents pour lancer une startup avec Claude Code : valider une idée, étude de marché, lean canvas, pitch deck, prospection, landing page, prévisionnel, veille concurrentielle.",
+  "author": { "name": "Eli Ben Baruk", "url": "https://github.com/ebenbaruk" },
+  "repository": "https://github.com/ebenbaruk/track-entrepreneurship-CC",
+  "license": "MIT",
+  "keywords": ["startup", "entrepreneurship", "pitch", "market-research", "fundraising", "french"],
+  "skills": "./.claude/skills",
+  "agents": [
+    "./.claude/agents/investisseur-sceptique.md",
+    "./.claude/agents/client-cible.md",
+    "./.claude/agents/mentor.md"
+  ]
+}

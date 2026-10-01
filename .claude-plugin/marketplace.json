@@ -9,8 +9,8 @@
   "plugins": [
     {
       "name": "entrepreneur",
-      "description": "8 skills (valider une idée, étude de marché, lean canvas, pitch deck, cold email, landing page, prévisionnel, veille) + 3 agents (investisseur sceptique, client cible, mentor).",
-      "source": "./plugin",
+      "description": "Kit du cours : 8 skills startup + 27 skills de la communauté (marketing, méthode, design) + 3 agents (investisseur sceptique, client cible, mentor).",
+      "source": "./",
       "category": "productivity"
     }
   ]
