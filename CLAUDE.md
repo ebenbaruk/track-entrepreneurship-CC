@@ -29,6 +29,7 @@
 - Skills startup : `/valider-idee`, `/etude-de-marche`, `/lean-canvas`, `/pitch-deck`, `/cold-email`, `/landing-page`, `/previsionnel`, `/veille-concurrents`.
 - Agents (`.claude/agents/`) : `investisseur-sceptique`, `client-cible`, `mentor`.
 - Skills de la communauté : voir `THIRD_PARTY.md`.
+- PowerPoint / Word / Excel / PDF : `/installer-documents` installe les skills officiels d'Anthropic.
 
 ## Organisation des fichiers
 Range les livrables dans `startup/` :

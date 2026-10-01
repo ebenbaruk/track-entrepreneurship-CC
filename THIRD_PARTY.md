@@ -36,4 +36,4 @@ Chaque dossier contient la licence de son auteur. Pour la dernière version, va 
 | `ui-ux-pro-max` | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | `09170ee` | MIT |
 | `frontend-slides` | [zarazhangrui/frontend-slides](https://github.com/zarazhangrui/frontend-slides) | `9906a34` | MIT |
 
-Non inclus (licence propriétaire ou installation spécifique), voir le README : skills documents d'Anthropic (pptx, docx, xlsx, pdf), gstack, GBrain, Karpathy guidelines (pas de licence ; ses principes sont résumés dans `CLAUDE.md`).
+Non inclus (licence propriétaire ou installation spécifique), voir le README : skills documents d'Anthropic (pptx, docx, xlsx, pdf ; licence © Anthropic qui interdit la copie et la redistribution, installables avec `/installer-documents`), gstack, GBrain, Karpathy guidelines (pas de licence ; ses principes sont résumés dans `CLAUDE.md`).

@@ -3,6 +3,8 @@
 **Devenir super-user de Claude Code et l'utiliser pour lancer (et faire tourner) une startup.**
 Kit du cours *Entrepreneurship* — ESILV.
 
+📑 **Les slides du cours : [`slides/Claude-Code-pour-entrepreneurs.pdf`](slides/Claude-Code-pour-entrepreneurs.pdf)**
+
 ## ⚡ Démarrage en 30 secondes
 
 ```bash
@@ -24,15 +26,16 @@ claude
 ma-startup/
 ├── CLAUDE.md               ← la mémoire de ta startup (à remplir)
 ├── .claude/
-│   ├── skills/             ← 35 skills, appelables avec /nom
+│   ├── skills/             ← 36 skills, appelables avec /nom
 │   └── agents/             ← 3 subagents : investisseur-sceptique, client-cible, mentor
+├── slides/               ← les slides du cours en PDF
 ├── THIRD_PARTY.md          ← d'où viennent les skills de la communauté (sources, licences)
 ├── .claude-plugin/         ← pour installer le kit partout (hors de ce dossier)
 ├── install.sh              ← installation globale (optionnelle)
 └── startup/                ← tes livrables (créé par Claude au fur et à mesure)
 ```
 
-### Les 35 skills du dossier
+### Les 36 skills du dossier
 
 | Famille | Commandes |
 |---|---|
@@ -40,7 +43,9 @@ ma-startup/
 | 📈 **Marketing** (Corey Haines) | `/copywriting` `/cro` `/launch` `/pricing` `/customer-research` `/competitors` `/product-marketing` `/marketing-ideas` `/marketing-plan` `/seo-audit` `/social` `/emails` |
 | 🦸 **Méthode** (Superpowers) | `/brainstorming` `/writing-plans` `/executing-plans` `/dispatching-parallel-agents` `/subagent-driven-development` `/systematic-debugging` `/test-driven-development` `/verification-before-completion` |
 | 🎨 **Design & contenu** | `/frontend-design` `/ui-ux-pro-max` `/frontend-slides` `/humanizer` |
-| 🧰 **Outils** | `/caveman` `/last30days` `/skill-creator` |
+| 🧰 **Outils** | `/caveman` `/last30days` `/skill-creator` `/installer-documents` |
+
+**PowerPoint, Word, Excel, PDF** : tape **`/installer-documents`**. Il installe les skills officiels d'Anthropic (`pptx`, `docx`, `xlsx`, `pdf`). Ils ne peuvent pas être copiés dans ce repo, leur licence interdit la redistribution ; ils s'installent donc depuis la source officielle, en une commande.
 
 **Pourquoi manuels ?** Chaque skill a `disable-model-invocation: true` dans son `SKILL.md`. Avantages : Claude ne lance rien sans toi, et leurs descriptions ne remplissent pas son contexte. Pour qu'un skill se déclenche tout seul, supprime cette ligne.
 
@@ -397,7 +402,7 @@ Un simple `CLAUDE.md` tiré des observations d'Andrej Karpathy sur les erreurs d
 
 | Skill | ⭐ | Pourquoi | Installation |
 |---|---|---|---|
-| [**Anthropic Skills**](https://github.com/anthropics/skills) (officiel) | ~179k | **PowerPoint, Word, Excel, PDF** de qualité pro (licence propriétaire, à installer ; `frontend-design` et `skill-creator` sont inclus ✅) | `/plugin marketplace add anthropics/skills` → `/plugin install document-skills@anthropic-agent-skills` |
+| [**Anthropic Skills**](https://github.com/anthropics/skills) (officiel) | ~179k | **PowerPoint, Word, Excel, PDF** de qualité pro (licence propriétaire : tape `/installer-documents` ; `frontend-design` et `skill-creator` sont inclus ✅) | `/plugin marketplace add anthropics/skills` → `/plugin install document-skills@anthropic-agent-skills` |
 | ✅ **frontend-design** (officiel) | — | Des interfaces qui n'ont pas l'air générées par une IA | `/plugin install frontend-design@claude-plugins-official` |
 | ✅ [**UI UX Pro Max**](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | ~132k | Base de styles, palettes, typos et règles UX pour des sites pro | `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` → `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill` |
 | ✅ [**Frontend Slides**](https://github.com/zarazhangrui/frontend-slides) | ~30k | De belles présentations en HTML (pitch, cours) | `/plugin marketplace add zarazhangrui/frontend-slides` → `/plugin install frontend-slides@frontend-slides` |
