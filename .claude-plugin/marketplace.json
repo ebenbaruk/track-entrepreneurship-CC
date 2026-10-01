@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "track-entrepreneurship-cc",
+  "description": "Skills et agents Claude Code pour entrepreneurs — cours Entrepreneurship ESILV.",
+  "owner": {
+    "name": "Eli Ben Baruk",
+    "url": "https://github.com/ebenbaruk"
+  },
+  "plugins": [
+    {
+      "name": "entrepreneur",
+      "description": "8 skills (valider une idée, étude de marché, lean canvas, pitch deck, cold email, landing page, prévisionnel, veille) + 3 agents (investisseur sceptique, client cible, mentor).",
+      "source": "./plugin",
+      "category": "productivity"
+    }
+  ]
+}
